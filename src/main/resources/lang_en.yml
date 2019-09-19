@@ -1,0 +1,32 @@
+colours:
+  # use <c1>text</c1> to refer to the first colour, <c2>text</c2> to refer to the second colour etc
+  # colours can be found in https://minecraft.gamepedia.com/Formatting_codes
+  # use these to set a colour "palette" where you can easily change your colours
+  # you may add additional colours
+  # normal &x colours can be used in all messages as well
+  error: [c, e, c]
+  syntax: [e, a, f]
+  info: [9, 2, a]
+  help: [b, a, e]
+
+xe:
+  add_success: '<c2>Gave</c2> <c3>{amount}</c3> <c2>to</c2> <c3>{player}.</c3> <c2>They now have:</c2> <c3>{balance}</c3>'
+  add_receive: '<c3>{amount}</c3> <c2>has been added to your balance. You now have</c2> <c3>{balance}</c3>'
+  take_success: '<c2>Took</c2> <c3>{amount}</c3> <c2>from</c2> <c3>{player}.</c3> <c2>They now have:</c2> <c3>{balance}</c3>'
+  take_receive: '<c3>{amount}</c3> <c2>has been taken from your balance.</c2> You now have</c2> <c3>{balance}</c3>'
+  set_success: '<c2>Set the balance of</c2> <c3>{player}</c3> <c2>to</c2> <c3>{amount}</c3>'
+  set_receive: '<c2>Your balance was set to</c2> <c3>{amount}</c3>'
+  bal_specific_self: '<c2>Balance:</c2> <c3>{amount}</c3>'
+  bal_specific_other: '<c2>Balance of</c2> <c1>{player}:</c1> <c3>{amount}</c3>'
+  bal_all_header_self: '<c1>Balance:</c1>'
+  bal_all_header_other: '<c1>Balance of</c1> <c2>{player}:</c2>'
+  bal_all: '<c3>{amount}</c3>'
+acf-core:
+  help_page_information: '- Showing page <c2>{page}</c2> of <c2>{totalpages}</c2> (<c3>{results}</c3> results).'
+  help_no_results: 'Error: No more results.'
+  help_header: '<c3>=== </c3><c1>Showing help for </c1><c2>{commandprefix}{command}</c2><c3> ===</c3>'
+  help_format: '<c1>{command}</c1> <c2>{parameters}</c2>'
+  help_detailed_header: '<c3>=== </c3><c1>Showing detailed help for </c1><c2>{commandprefix}{command}</c2><c3> ===</c3>'
+  help_detailed_command_format: '<c1>{command}</c1> <c2>{parameters}</c2>'
+  help_detailed_parameter_format: '<c2>{syntaxorname}</c2>: <c3>{description}</c3>'
+  help_search_header: '<c3>=== </c3><c1>Search results for </c1><c2>{commandprefix}{command} {search}</c2><c3> ===</c3>'

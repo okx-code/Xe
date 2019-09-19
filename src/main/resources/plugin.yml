@@ -1,0 +1,7 @@
+version: '0.1'
+api-version: '1.14'
+main: sh.okx.xe.XePlugin
+description: A lightweight multi-economy vault-supported plugin.
+name: Xe
+softdepend: [Vault, PlaceholderAPI]
+author: Okx

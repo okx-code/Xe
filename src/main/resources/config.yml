@@ -1,0 +1,22 @@
+# locale to use when formatting numbers
+# see https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry for a list.
+# search for "Type: Language"
+# to use more complex locales, see https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html
+locale: en
+
+# the primary currency ID to use in Vault.
+primary-currency-id: 1
+
+# if false, shows the primary currency in /bal.
+# if true, shows the player's balance for all currencies.
+balance-show-all-currencies: true
+
+# hide the balance for a currency in /bal if a player has none of that currency.
+balance-hide-no-currency: false
+
+# if set to true, will not tell the player that they have received currency.
+hide-add-currency: false
+# if true, will not tell if the player has had currency taken away.
+hide-take-surrency: false
+# if true, will not tell if the player has had currency set to a specific value.
+hide-set-surrency: false
