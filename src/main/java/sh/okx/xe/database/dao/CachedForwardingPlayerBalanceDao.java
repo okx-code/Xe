@@ -3,21 +3,20 @@ package sh.okx.xe.database.dao;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import com.sun.istack.internal.NotNull;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import sh.okx.xe.XePlugin;
 import sh.okx.xe.data.Currency;
 import sh.okx.xe.data.CurrencyManager;
 import sh.okx.xe.data.PlayerBalance;
-
-import java.util.Iterator;
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class CachedForwardingPlayerBalanceDao implements PlayerBalanceDao {
   private PlayerBalanceDao dao;

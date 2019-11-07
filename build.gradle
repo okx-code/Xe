@@ -27,7 +27,7 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     
-    shadow 'org.jetbrains:annotations:16.0.2'
+    shadow 'org.jetbrains:annotations:18.0.0'
     shadow 'org.spigotmc:spigot:1.14.4-R0.1-SNAPSHOT'
     shadow 'org.spigotmc:spigot-api:1.14.4-R0.1-SNAPSHOT'
     shadow "com.github.MilkBowl:VaultAPI:1.7"
