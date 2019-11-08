@@ -1,12 +1,11 @@
 package sh.okx.xe;
 
-import org.bukkit.OfflinePlayer;
+import java.math.BigDecimal;
+import java.util.Objects;
+import java.util.UUID;
 import sh.okx.xe.data.CurrencyManager;
 import sh.okx.xe.data.PlayerBalance;
 import sh.okx.xe.database.dao.PlayerBalanceDao;
-
-import java.math.BigDecimal;
-import java.util.Objects;
 
 public class XeAPI {
   private XePlugin plugin;
@@ -22,7 +21,7 @@ public class XeAPI {
 
   public static void initAPI(XePlugin plugin) {
     if (XeAPI.api != null) {
-      throw new IllegalStateException("XeAPI already initialised!)");
+      throw new IllegalStateException("XeAPI already initialised!");
     }
 
     XeAPI.api = new XeAPI(plugin);
@@ -30,31 +29,43 @@ public class XeAPI {
 
   private XeAPI(XePlugin plugin) {
     this.plugin = plugin;
-    this.dao = plugin.getDB().getPlayerBalanceDao();
+    this.dao = plugin.getDatabase().getPlayerBalanceDao();
   }
 
-  public void deposit(OfflinePlayer player, double amount, String currency) {
+  public void deposit(UUID uuid, double amount) {
+    deposit(uuid, amount, CurrencyManager.getInstance().getPrimaryCurrency().getMajor());
+  }
+
+  public void deposit(UUID uuid, double amount, String currency) {
     if (amount < 0) {
       throw new IllegalArgumentException("amount < 0");
     }
-    PlayerBalance bal = dao.getPlayerBalance(null, player.getUniqueId(),
+    PlayerBalance bal = dao.getPlayerBalance(null, uuid,
         Objects.requireNonNull(CurrencyManager.getInstance().getCurrency(currency)));
     bal.add(BigDecimal.valueOf(amount));
     dao.save(bal);
   }
 
-  public void withdraw(OfflinePlayer player, double amount, String currency) {
+  public void withdraw(UUID uuid, double amount) {
+    withdraw(uuid, amount, CurrencyManager.getInstance().getPrimaryCurrency().getMajor());
+  }
+
+  public void withdraw(UUID uuid, double amount, String currency) {
     if (amount < 0) {
       throw new IllegalArgumentException("amount < 0");
     }
-    PlayerBalance bal = dao.getPlayerBalance(null, player.getUniqueId(),
+    PlayerBalance bal = dao.getPlayerBalance(null, uuid,
         Objects.requireNonNull(CurrencyManager.getInstance().getCurrency(currency)));
     bal.add(BigDecimal.valueOf(-amount));
     dao.save(bal);
   }
 
-  public double getBalance(OfflinePlayer player, String currency) {
-    PlayerBalance bal = dao.getPlayerBalance(null, player.getUniqueId(),
+  public double getBalance(UUID uuid) {
+    return getBalance(uuid, CurrencyManager.getInstance().getPrimaryCurrency().getMajor());
+  }
+
+  public double getBalance(UUID uuid, String currency) {
+    PlayerBalance bal = dao.getPlayerBalance(null, uuid,
         Objects.requireNonNull(CurrencyManager.getInstance().getCurrency(currency)));
     return bal.getBalance().doubleValue();
   }

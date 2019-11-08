@@ -20,7 +20,7 @@ public class XeExpansion extends PlaceholderExpansion {
     if (params.startsWith(BALANCE_PREFIX)) {
       String currencyName = params.substring(BALANCE_PREFIX.length());
       Currency currency = CurrencyManager.getInstance().getCurrency(currencyName);
-      return plugin.getDB().getPlayerBalanceDao().getPlayerBalance(null, p.getUniqueId(), currency).getBalancedFormatted();
+      return plugin.getDatabase().getPlayerBalanceDao().getPlayerBalance(null, p.getUniqueId(), currency).getBalancedFormatted();
     }
     return null;
   }

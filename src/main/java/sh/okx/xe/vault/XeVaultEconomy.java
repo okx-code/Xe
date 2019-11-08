@@ -21,7 +21,7 @@ public class XeVaultEconomy extends AbstractVaultEconomy {
   private final PlayerBalanceDao dao;
 
   public XeVaultEconomy(XePlugin xe) {
-    this.dao = xe.getDB().getPlayerBalanceDao();
+    this.dao = xe.getDatabase().getPlayerBalanceDao();
     this.primaryCurrency = CurrencyManager.getInstance().getPrimaryCurrency();
   }
 

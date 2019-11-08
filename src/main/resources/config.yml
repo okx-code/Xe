@@ -9,7 +9,7 @@ primary-currency-id: 1
 
 # if false, shows the primary currency in /bal.
 # if true, shows the player's balance for all currencies.
-balance-show-all-currencies: true
+balance-show-all-currencies: false
 
 # hide the balance for a currency in /bal if a player has none of that currency.
 balance-hide-no-currency: false
@@ -20,3 +20,12 @@ hide-add-currency: false
 hide-take-surrency: false
 # if true, will not tell if the player has had currency set to a specific value.
 hide-set-surrency: false
+
+mongo:
+  url: 'mongodb://username:password@localhost'
+  database: 'minecraft'
+  collection: 'Users'
+
+# the amount of ticks between checking the mongo database
+# 20 ticks = 1 second
+cache-ticks: 40

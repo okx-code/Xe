@@ -7,6 +7,11 @@ import co.aikar.commands.InvalidCommandArgument;
 import co.aikar.commands.MessageKeys;
 import co.aikar.commands.MessageType;
 import co.aikar.commands.MinecraftMessageKeys;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -24,18 +29,15 @@ import sh.okx.xe.command.CommandXe;
 import sh.okx.xe.data.Currency;
 import sh.okx.xe.data.CurrencyManager;
 import sh.okx.xe.database.Database;
+import sh.okx.xe.database.SimpleDatabase;
 import sh.okx.xe.database.dao.PlayerBalanceDao;
-import sh.okx.xe.database.sqlite.SqliteDatabase;
+import sh.okx.xe.database.skeleton.DiscordSrvIdMapper;
+import sh.okx.xe.database.skeleton.MongoSkeletonCreditDao;
+import sh.okx.xe.database.skeleton.SkeletonPlayerBalanceDao;
 import sh.okx.xe.migration.Migration;
 import sh.okx.xe.migration.MigrationFactory;
 import sh.okx.xe.papi.XeExpansion;
 import sh.okx.xe.vault.VaultHookManager;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
-import java.util.UUID;
 
 public class XePlugin extends JavaPlugin {
   @Nullable
@@ -44,7 +46,7 @@ public class XePlugin extends JavaPlugin {
   private Locale locale;
   private Database database;
 
-  public Database getDB() {
+  public Database getDatabase() {
     return database;
   }
 
@@ -58,7 +60,14 @@ public class XePlugin extends JavaPlugin {
 
     loadCurrencies();
 
-    database = new SqliteDatabase(getDataFolder(), getConfig().getBoolean("per-world"));
+//    database = new SqliteDatabase(getDataFolder(), getConfig().getBoolean("per-world"));
+    database = new SimpleDatabase(new SkeletonPlayerBalanceDao(
+        new MongoSkeletonCreditDao(
+            getConfig().getString("mongo.url"),
+            getConfig().getString("mongo.database"),
+            getConfig().getString("mongo.collection")),
+        new DiscordSrvIdMapper(),
+        getConfig().getInt("cache-ticks")));
     database.init();
 
     tryVaultHook();

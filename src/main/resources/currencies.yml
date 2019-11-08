@@ -20,12 +20,10 @@ currencies:
     # major: 10 Dollars
     # minor: 1,002 Cents
     display: sign
-    # a unique id for the currency
-    # if the currency is renamed, everyone will still keep their balance
-    # as long as the currency has the same id
+
     id: 1
-    # the default amount of money a player starts with
-    default: 100
+    default: 0
+
     sign: '$'
     # the alias to use as a command
     # that is, you can do /dollar set <player> <amount> instead of /xec set <player> <amount> dollar
@@ -35,15 +33,3 @@ currencies:
     # /dollars [player] is equal to /xec bal [player] dollar
     # you can also comment out this line if you don't need it
     balance: 'dollars'
-  crystal:
-    major: Crystal
-    major-plural: Crystals
-    minr: Shard
-    minor-plural: Shards
-    format: '#,##0.00'
-    display: signfront
-    id: 2
-    default: 1000
-    sign: c
-    alias: 'crystal'
-    balance: 'crystals'
