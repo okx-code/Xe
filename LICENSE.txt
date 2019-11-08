@@ -13,6 +13,8 @@ below) provided that the following conditions are met:
      * Neither the name of the copyright holder nor the names of its
      contributors may be used to endorse or promote products derived from this
      software without specific prior written permission.
+     
+     * The Software is not licensed for commercial use.
 
 Minecraft Servers that are not compliant with the Minecraft End User License
 Agreement (https://account.mojang.com/documents/minecraft_eula) are prohibited
